@@ -1,0 +1,24 @@
+<h1>Robot Online Store</h1>
+
+<p>This component show data fetched from the server.</p>
+
+<p *ngIf="!robots"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="robots">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Availability</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let robot of robots">
+      <td>{{ robot.name }}</td>
+      <td>{{ robot.description }}</td>
+      <td><input type="checkbox" [checked]='robot.isAvailable' onclick="return false;"/></td>
+      <td><a class="nav-link text-dark" [routerLink]='["/robot/delete", robot.id]'>Delete</a></td>
+    </tr>
+  </tbody>
+</table>
